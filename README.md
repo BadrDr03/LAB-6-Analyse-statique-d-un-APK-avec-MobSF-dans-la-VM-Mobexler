@@ -92,10 +92,20 @@ L'inventaire des composants montre l'utilisation de la `MainActivity`. Nous surv
 
 ![Import OVA](https://github.com/user-attachments/assets/2dfbb6b8-2735-4d54-b37d-e49f42042c4b)
 
-
-
-
-
-
 ---
 
+## 🔍 Task 5 — Analyse de Sécurité (Security Analysis)
+**Objectif :** Identifier les vulnérabilités logicielles et les faiblesses d'implémentation technique.
+
+### 1. Analyse du Code Source
+L'examen automatisé du code a permis d'identifier plusieurs points de vigilance :
+* **Cryptographie :** Recherche d'algorithmes obsolètes ou de vecteurs d'initialisation (IV) statiques.
+* **Secrets :** Détection de chaînes de caractères sensibles (clés d'API, mots de passe) incluses directement dans le code.
+
+### 2. Analyse des Librairies Natives (Shared Libraries)
+L'application utilise des composants en C/C++. L'analyse MobSF vérifie la présence de protections essentielles au niveau binaire pour prévenir l'exploitation de dépassements de tampon (Buffer Overflow).
+
+### 3. Sécurité Réseau
+Vérification des politiques de sécurité réseau pour s'assurer que l'application impose des connexions chiffrées (TLS) et empêche les attaques de type Man-in-the-Middle (MitM).
+
+![Import OVA](https://github.com/user-attachments/assets/83514675-3e5b-4d16-80a2-674070036287)
