@@ -54,6 +54,45 @@ L'analyse automatisée a révélé plusieurs failles nécessitant une investigat
 
 ---
 
+## 📊 Task 3 — Exploration de l'Interface MobSF
+**Objectif :** Naviguer dans les résultats de l'analyse statique et identifier les métadonnées de l'application.
+
+### 1. Vue d'ensemble du Dashboard
+L'interface de MobSF permet une navigation rapide entre les différentes sections de l'audit (Permissions, Network Analysis, Security Score). Le tableau de bord centralise les statistiques critiques de l'APK.
+
+### 2. Données de Traçabilité (Vérification)
+Conformément aux exigences du laboratoire, les informations suivantes ont été relevées :
+* **Version de l'outil :** v4.0.6
+* **Security Score :** 15/100
+* **Package Name :** `owasp.mstg.uncrackable1`
+* **Main Activity :** `owasp.mstg.uncrackable1.MainActivity`
+
+---
+
+## 🛡️ Task 4 — Analyse du Manifeste (Manifest Analysis)
+**Objectif :** Évaluer la posture de sécurité de l'application à travers ses fichiers de configuration.
+
+### 1. Analyse des vulnérabilités critiques (High)
+L'examen du fichier `AndroidManifest.xml` via MobSF a révélé des failles majeures de configuration :
+
+* **Mode Debug Activé :** `android:debuggable="true"`. 
+    * *Risque :* Permet l'injection de code et l'analyse dynamique non autorisée.
+* **Sauvegarde Autorisée :** `android:allowBackup="true"`.
+    * *Risque :* Fuite de données utilisateur via les outils de sauvegarde système.
+
+### 2. Gestion des Permissions
+L'application définit les droits d'accès au système. Dans ce laboratoire, nous vérifions :
+* La pertinence des permissions demandées par rapport aux fonctionnalités.
+* La présence de permissions "Dangereuses" selon le classement Android.
+
+### 3. Analyse des Activités
+L'inventaire des composants montre l'utilisation de la `MainActivity`. Nous surveillons les filtres d'intention (Intent Filters) pour prévenir les détournements d'activités.
+
+![Import OVA](https://github.com/user-attachments/assets/7ca56609-c997-4228-b2b7-6fcb9072c826)
+
+![Import OVA](https://github.com/user-attachments/assets/2dfbb6b8-2735-4d54-b37d-e49f42042c4b)
+
+
 
 
 
